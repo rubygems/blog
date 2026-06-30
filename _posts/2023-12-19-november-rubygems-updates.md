@@ -13,7 +13,7 @@ This month in RubyGems, we released RubyGems [3.4.22](https://github.com/rubygem
 
 One of the key changes is a boost in performance, achieved by eliminating the need for regular expression matches in `Gem::Platform.local` ([#7104](https://github.com/rubygems/rubygems/pull/7104)). Additionally, we shipped an update of the SPDX license list, ensuring that RubyGems is in line with the most recent industry standards ([#7040](https://github.com/rubygems/rubygems/pull/7040)).
 
-Another important update: The YAML serializer has been enhanced to correctly handle empty arrays ([#7099](https://github.com/rubygems/rubygems/pull/7099)). The search process has also been refined, now effectively ignoring `.gem `files that are not in tar format ([#7095](https://github.com/rubygems/rubygems/pull/7095)). The update also brings a new feature that allows users to uninstall multiple versions of the same gem at once, making gem management more efficient ([#7063](https://github.com/rubygems/rubygems/pull/7063)).
+Another important update: The YAML serializer has been enhanced to correctly handle empty arrays ([#7099](https://github.com/rubygems/rubygems/pull/7099)). The search process has also been refined, now effectively ignoring `.gem` files that are not in tar format ([#7095](https://github.com/rubygems/rubygems/pull/7095)). The update also brings a new feature that allows users to uninstall multiple versions of the same gem at once, making gem management more efficient ([#7063](https://github.com/rubygems/rubygems/pull/7063)).
 
 Some other improvements that landed into our repo this month that are NOT included in the above releases are:
 

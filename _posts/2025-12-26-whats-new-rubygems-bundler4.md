@@ -113,4 +113,4 @@ This post highlighted some major new features in RubyGems/Bundler 4.0. The proje
 
 Historically, RubyGems and Bundler have maintained separate codebases for their resolvers despite performing similar tasks. Looking ahead to version 4.1, we plan to gradually consolidate and unify these components.
 
-I’m looking forward to work with you all to make RubyGems and Bundler even better in 2026!
+I’m looking forward to working with you all to make RubyGems and Bundler even better in 2026!
