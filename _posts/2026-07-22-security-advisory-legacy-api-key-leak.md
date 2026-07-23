@@ -122,7 +122,7 @@ We recommend scoped keys over full-access keys, MFA enabled for API access, and 
 
 ## Credit
 
-Thanks to Luke Marshall from [trufflesec.com](https://trufflesec.com) for the responsible report and for working with us through remediation. This security report has been published as [GHSA-9j48-x3c3-mrp2](https://github.com/rubygems/rubygems.org/security/advisories/GHSA-9j48-x3c3-mrp2)
+Thanks to Luke Marshall from [Truffle Security](https://trufflesecurity.com/blog/rubygems-cache-vulnerability) for the responsible report and for working with us through remediation. This security report has been published as [GHSA-9j48-x3c3-mrp2](https://github.com/rubygems/rubygems.org/security/advisories/GHSA-9j48-x3c3-mrp2)
 
 ## Our commitment to security
 
