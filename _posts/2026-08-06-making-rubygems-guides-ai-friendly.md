@@ -13,11 +13,11 @@ The second adds [`llms.txt`](https://guides.rubygems.org/llms.txt) and [`llms-fu
 
 The third serves raw Markdown for every page ([rubygems/guides#524](https://github.com/rubygems/guides/pull/524)). Append `.md` to any guide URL, such as [what-is-a-gem.md](https://guides.rubygems.org/what-is-a-gem.md), and you get the rendered Markdown source with no navigation or markup. That cuts page size to between a half and an eighth of the HTML. `what-is-a-gem` is 26.7 KB as HTML and 3.3 KB as Markdown. Each HTML page also links its Markdown twin via `rel="alternate" type="text/markdown"`.
 
-To try it, hand your agent the URL `https://guides.rubygems.org/llms.txt` and ask a RubyGems question. One fetch gives it a table of contents, and every follow-up fetch spends tokens on content instead of markup.
+To try it, hand your agent the URL `https://guides.rubygems.org/llms.txt` and ask a RubyGems question. One fetch gives it a table of contents. Every page it reads afterward fills the context window with the answer rather than with navigation and tags, so the same budget covers several times more material.
 
 ### New formats need fresh content
 
-A machine readable feed is only as useful as the writing behind it. Serving an agent guidance that still mentioned freenode IRC and Ruby 1.8 path layouts would defeat the purpose, so the content was overhauled alongside the formats. The guides are reorganized around tasks instead of tools, into four sections named Getting Started, Guides, Concepts, and Reference, with full-text search powered by Pagefind.
+A machine readable feed is only as useful as the writing behind it. Serving an agent guidance that still mentioned freenode IRC and Ruby 1.8 path layouts would defeat the purpose, so the content was overhauled alongside the formats. The guides are reorganized around tasks instead of tools, into four sections named Getting Started, Guides, Concepts, and Reference. Full-text search is powered by Pagefind, so open any page, press Cmd+K or Ctrl+K, and search the whole site without leaving where you are.
 
 The new Concepts section explains how the system works, from [dependency resolution](https://guides.rubygems.org/dependency-resolution/) to platforms and native gems. Reference now documents [`.gemrc` configuration](https://guides.rubygems.org/configuration/) and environment variables for the first time, and absorbs the Bundler man pages. The [security guide](https://guides.rubygems.org/security/) was rewritten around MFA, Trusted Publishing, lockfile checksums, and [cooldown]({% post_url 2026-06-03-cooldown-let-new-gems-be-vetted %}).
 
