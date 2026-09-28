@@ -1,0 +1,70 @@
+name: Draft release announcement
+
+# Started by the release workflow of ruby/rubygems once the GitHub release of
+# the tag exists.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Released version, without the leading v
+        required: true
+      author:
+        description: Author of the post
+        required: true
+      author_email:
+        description: Email of the author of the post
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  draft:
+    runs-on: ubuntu-24.04
+    if: github.repository == 'rubygems/blog'
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: ruby/rubygems
+          ref: v${{ inputs.version }}
+          path: rubygems
+          persist-credentials: false
+      - name: Setup ruby
+        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
+        with:
+          ruby-version: ruby
+          bundler: none
+      - name: Install dependencies
+        run: bin/rake dev:frozen_deps
+        working-directory: rubygems
+      - name: Download the released packages
+        run: gh release download "v${VERSION}" -R ruby/rubygems -D pkg -p 'rubygems-*'
+        working-directory: rubygems
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ inputs.version }}
+      - name: Draft
+        run: |
+          git config --global user.name "$AUTHOR"
+          git config --global user.email "$AUTHOR_EMAIL"
+          bin/rake "blog:draft[${GITHUB_WORKSPACE}]"
+        working-directory: rubygems
+        env:
+          AUTHOR: ${{ inputs.author }}
+          AUTHOR_EMAIL: ${{ inputs.author_email }}
+      - name: Remove the rubygems checkout
+        run: rm -rf rubygems
+      - uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          branch: release-announcement/${{ inputs.version }}
+          title: Add ${{ inputs.version }} release announcement
+          commit-message: Added ${{ inputs.version }} release announcement
+          author: ${{ inputs.author }} <${{ inputs.author_email }}>
+          body: Drafted by the release workflow of ruby/rubygems.
+          draft: true
