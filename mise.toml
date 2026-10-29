@@ -1,0 +1,6 @@
+[settings]
+idiomatic_version_file_enable_tools = ["ruby"]
+
+[bootstrap.packages]
+"apt:libvips42" = "latest"
+"apt:fonts-dejavu-core" = "latest"
