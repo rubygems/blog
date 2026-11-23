@@ -34,6 +34,8 @@ author_email: author@example.com
 ---
 ```
 
+If the post's `author_email` isn't already a key or alias in `_data/authors.yml`, add an entry for the author (`name`, plus optional `url`, `bio`, `aliases`; see the schema comment at the top of the file). Without one, the byline falls back to the plain `author` string with no profile link or bio.
+
 ## Gotchas
 
 - **Never edit `_site/assets/css/styles.css`** — that's compiled output, regenerated on every build. Edit `_tailwind.css`.
