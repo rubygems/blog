@@ -36,3 +36,8 @@ anton@rubygems.org:
 kirk@rubycentral.org:
   name: "Kirk Haines"
   bio: "Community Manager at Ruby Central."
+
+jenny@rubygems.org:
+  name: "Jenny Shen"
+  url: "https://github.com/jenshenny"
+  bio: "RubyGems.org maintainer"
